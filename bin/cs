@@ -1,0 +1,19 @@
+#!/bin/sh
+rm -rf cscope.*
+
+find . -path ./.pc -prune -o \( -name '*.c' -o -name '*.cpp' -o -name '*.cc' -o -name '*.h' -o -name '*.s' -o -name '*.S' \) -print > cscope.files
+
+find . -path ./.pc -prune -o -name '*.sh' >> cscope.files
+find . -path ./.pc -prune -o -name '*.mk' >> cscope.files
+find . -path ./.pc -prune -o -name 'Makefile' >> cscope.files
+
+find . -path ./.pc -prune -o -name '*.java' >> cscope.files
+find . -path ./.pc -prune -o -name '*.xml' >> cscope.files
+find . -path ./.pc -prune -o -name '*.txt' >> cscope.files
+find . -path ./.pc -prune -o -name 'Kconfig' >> cscope.files
+find . -path ./.pc -prune -o -name '*.log' >> cscope.files
+find . -path ./.pc -prune -o -name '*.dts' >> cscope.files
+find . -path ./.pc -prune -o -name '*.dtsi' >> cscope.files
+
+cscope -i cscope.files
+
